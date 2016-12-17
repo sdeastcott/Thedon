@@ -1,0 +1,36 @@
+def conditionals() {
+    var x = 0;
+    var y = 1;
+
+    if (x == 0) {
+        println("x == 0 is true");
+    } else {
+        println("x == 0 is false");
+    }
+
+    if (y == 0) {
+        println("y == 0 is true");
+    } else {
+        println("y == 0 is false");
+    }
+
+    if ((x == 1) and (y == 1)) {
+        println("x == 1 is true and y == 1 is true");
+    } else {
+        println("x == 1 is false or y == 1 is false");
+    }
+
+    if ((x == 0) or (y == 2)) {
+        println("x == 0 is true or y == 2 is true");
+    } else {
+        println("x == 0 is false and y == 2 is false");
+    }
+
+    if (x != 5) {
+        println("x != 5 is true");
+    } else {
+        println("x != 5 is false");
+    }
+}
+
+conditionals();

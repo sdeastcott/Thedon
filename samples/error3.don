@@ -1,0 +1,11 @@
+$ Right bracket instead of right parentheses
+
+def main() {
+    var x = 0;
+    while (x < 10] {
+        println(x);
+        x = x + 1;
+    }
+}
+
+main();

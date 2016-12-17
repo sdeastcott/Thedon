@@ -1,0 +1,17 @@
+def arrays() {
+    var arr1 = [1, "dog", 2, "cat"];
+
+    $ print arr1
+    var i = 0;
+    while (i < 4) {
+        println("index ", i, " is ", arr1[i]);
+        i = i + 1;
+    }
+
+    var arr2 = [1, (lambda|| { println("hello world"); }), 2];
+
+    $ call lambda function in arr2 at index 1
+    (arr2[1])||;
+}
+
+arrays();

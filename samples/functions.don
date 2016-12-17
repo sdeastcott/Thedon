@@ -1,0 +1,21 @@
+def x() {
+    println("inside function x, calling function y");
+    def y() {
+        println("inside function y");
+    }
+    y();
+}
+
+def run_procedure(procedure) {
+    println("inside run-procedure, calling function x");
+    procedure();
+}
+
+def main() {
+    $ call function run_procedure with function x as an argument
+    $ function x will then be called within the body of run-procedure
+    $ once inside function x, nested function y will be called
+    run_procedure(x);
+}
+
+main();

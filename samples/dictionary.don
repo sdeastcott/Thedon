@@ -1,0 +1,206 @@
+$ Never figured out the correct implementation for this, so dictionaries currently do not work.
+
+def AVL_Tree() {
+    var node = null;
+    var height = -1;
+    var balance = 0;
+
+    def Node(k, v) {
+        var key = k;
+        var val = v;
+        var left = null;
+        var right = null;
+
+        def find(k) {
+            if (key == k) {
+                val;
+            } else {
+                var n = this;
+                var goLeft = key > k;
+
+                if (goLeft) {
+                   n = n.left;
+                } else {
+                   n = n.right;
+                }
+
+                if (n == null) {
+                    null;
+                } else {
+                    n.find(k);
+                }
+            }
+        }
+        this;
+    }
+
+    def insert(key, val) {
+        var n = Node(key, val);
+
+        if (node == null) {
+            node = n;
+            node.left = AVL_Tree();
+            node.right = AVL_Tree();
+        }
+        else {
+            if (key < node.key) {
+                node.left.insert(key);
+            }
+            else {
+                node.right.insert(key);
+            }
+        }
+        rebalance();
+    }
+
+    def rebalance() {
+        var recurse = False;
+        update_heights(recurse);
+        update_balances(recurse);
+        recurse = True;
+
+        while ((balance < -1) or (balance > 1)) {
+            if (balance > 1) {
+                if (node.left.balance < 0) {
+                    node.left.rotate_left();
+                    update_heights();
+                    update_balances();
+                }
+
+                rotate_right();
+                update_heights(recurse);
+                update_balances(recurse);
+            }
+
+            if (balance < -1) {
+                if (node.right.balance > 0) {
+                    node.right.rotate_right();
+                    update_heights(recurse);
+                    update_balances(recurse);
+                }
+                rotate_left();
+                update_heights(recurse);
+                update_balances(recurse);
+            }
+        }
+    }
+
+    def update_heights(recursive) {
+        if (node) {
+            if (recursive == True) {
+                if (node.left != null) {
+                    node.left.update_heights(recursive);
+                }
+                if (node.right != null) {
+                    node.right.update_heights(recursive);
+                }
+            }
+            if (node.left.height > node.right.height) {
+                height = 1 + node.left.height;
+            }
+            else {
+                height = 1 + node.right.height;
+            }
+        }
+        else {
+            height = -1;
+        }
+    }
+
+    def update_balances(recursive) {
+        if (node != null) {
+            if (recursive == True) {
+                if (node.left != null) {
+                    node.left.update_balances(recursive);
+                }
+                if (node.right != null) {
+                    node.right.update_balances(recursive);
+                }
+            }
+            balance = (node.left.height - node.right.height);
+        }
+        else {
+            balance = 0;
+        }
+    }
+
+    def rotate_right() {
+        var new_root = self.node.left.node;
+        var new_left_sub = new_root.right.node;
+        var old_root = node;
+        node = new_root;
+        old_root.left.node = new_left_sub;
+        new_root.right.node = old_root;
+    }
+
+    def rotate_left() {
+        var new_root = node.right.node;
+        var new_left_sub = new_root.left.node;
+        var old_root = node;
+        node = new_root;
+        old_root.right.node = new_left_sub;
+        new_root.left.node = old_root;
+    }
+
+    def delete(key) {
+        if (node != null) {
+            if (node.key == key) {
+                if ((node.left.node == null) and (node.right.node == null)) {
+                    node = null;
+                }
+                else {
+                    if (node.left.node == null) {
+                        node = node.right.node;
+                    }
+                    else {
+                        if (node.right.node == null) {
+                            node = node.left.node;
+                        }
+                        else {
+                            var successor = node.right.node;
+                            while ((successor != null) and (successor.left.node != null)) {
+                                successor = successor.left.node;
+                            }
+                            if (successor != null) {
+                                node.key = successor.key;
+                                node.right.delete(successor.key);
+                            }
+                        }
+                    }
+                }
+            }
+            else {
+                if (key < node.key) {
+                    node.left.delete(key);
+                }
+                else {
+                    node.right.delete(key);
+                }
+            }
+            rebalance();
+        }
+    }
+    this;
+}
+
+def Dictionary() {
+    var dict = AVL_Tree();
+
+    def insert(key, value) {
+        dict.insert(key, value);
+    }
+
+    def get(key) {
+        dict.find(key);
+    }
+
+    this;
+}
+
+def testDictionary() {
+    var dict = Dictionary();
+    dict.insert("a", 1);
+    dict.insert("b", 2);
+    dict.insert("c", 3);
+    println(dict.get("b"));
+}

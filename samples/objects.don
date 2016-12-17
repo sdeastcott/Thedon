@@ -1,0 +1,15 @@
+def Person(firstName, lastName) {
+    def fullName() {
+        println(firstName, " ", lastName);
+    }
+    this;
+}
+
+def main() {
+    var me = Person("Steven", "Eastcott");
+    println(me.firstName);
+    println(me.lastName);
+    me.fullName();
+}
+
+main();

@@ -1,0 +1,94 @@
+def ArrayList(arr) {
+    var self = this;
+    var array = arr;
+
+    def append(item) {
+        arr_append(array, item);
+        self;
+    }
+
+    def remove(index) {
+        arr_remove(array, index);
+        self;
+    }
+
+    def get(index) {
+        array[index];
+    }
+    self;
+}
+
+def Stack() {
+    var array = ArrayList([]);
+    var size = 0;
+    var self = this;
+
+    def pop() {
+        var value = peek();
+        array.remove(size - 1);
+        self.size = self.size - 1;
+        value;
+    }
+
+    def push(item) {
+        array.append(item);
+        self.size = self.size + 1;
+        self;
+    }
+
+    def peek() {
+        array.get(self.size - 1);
+    }
+
+    self;
+}
+
+def Calculator() {
+    var self = this;
+    var stack = Stack();
+
+    def handler(input) {
+        if (isInteger(input)) {
+            stack.push(stoi(input));
+        }
+        else {
+            var a = stack.pop();
+            var b = stack.pop();
+            if (input == "*") {
+                stack.push(b * a);
+            }
+            if (input == "^") {
+                stack.push(b ^ a);
+            }
+            if (input == "/") {
+                stack.push(b / a);
+            }
+            if (input == "-") {
+                stack.push(b - a);
+            }
+            if (input == "+") {
+                stack.push(b + a);
+            }
+        }
+        stack.peek();
+    }
+    self;
+}
+
+def main() {
+    $ test expression: 1 2 + 3 * 6 + 2 3 + /
+    $ should evaluate to 3
+    var i = 0;
+    var value = 0;
+    var calc = Calculator();
+    var testInput = "1 2 + 3 * 6 + 2 3 + /";
+    var splitString = split(testInput);
+
+    while (i < arr_length(splitString)) {
+        value = calc.handler(splitString[i]);
+        i = i + 1;
+    }
+    println(value);
+}
+
+main();

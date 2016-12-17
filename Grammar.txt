@@ -1,0 +1,89 @@
+program : definition
+        | definition program
+
+definition : varDef
+           | functionDef
+           | varExpr SEMICOLON
+           | parenExpr SEMICOLON
+
+varExpr : VARIABLE
+        | VARIABLE functionCall
+        | VARIABLE init
+        | VARIABLE OPEN_BRACKET unary CLOSE_BRACKET
+
+parenExpr : OPEN_PAREN expr CLOSE_PAREN
+          | OPEN_PAREN expr CLOSE_PAREN OPEN_PAREN optArgList CLOSE_PAREN
+
+unary : INTEGER
+      | STRING
+      | BOOLEAN
+      | MINUS unary
+      | NOT unary
+      | OPEN_BRACKET argList CLOSE_BRACKET
+      | PRINT OPEN_PAREN optArgList CLOSE_PAREN
+      | PRINTLN OPEN_PAREN optArgList CLOSE_PAREN
+      | varExpr
+      | parenExpr
+      | lambdaDef
+
+expr : unary
+     | unary operator expr
+
+operator : PLUS 
+         | TIMES 
+         | MINUS 
+         | DIVIDE
+         | MOD
+         | EXP
+         | AND
+         | OR
+         | LESS_THAN
+         | GREATER_THAN
+         | EQUAL
+
+ifStatement : IF OPEN_PAREN expr CLOSE_PAREN block optElse
+
+optElse : ELSE block
+        | ELSE ifStatement
+        | *empty*
+
+whileLoop : WHILE OPEN_PAREN expr CLOSE_PAREN block
+
+varDef : VAR VARIABLE optInit SEMICOLON
+
+init : ASSIGN expr
+
+optInit : init
+        | *empty*
+
+argList : expr
+        | expr COMMA argList
+
+optArgList : argList
+           | *empty*
+
+paramList : VARIABLE
+          | VARIABLE COMMA paramList
+
+optParamList : paramList
+             | *empty*
+
+lambdaDef : LAMBDA OPEN_PAREN optParamList CLOSE_PAREN block
+
+block : OPEN_BRACE statementList CLOSE_BRACE
+
+statement : expr SEMICOLON
+          | ifStatement
+          | whileLoop
+          | varDef
+          | functionDef
+
+statementList : statement
+              | statement statementList
+
+optStatementList: statementList
+                | *empty*
+
+functionDef : FUNCTION VARIABLE OPEN_PAREN optParamList CLOSE_PAREN block
+
+functionCall : OPEN_PAREN optArgList CLOSE_PAREN

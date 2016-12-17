@@ -1,0 +1,8 @@
+$ Missing semicolon
+
+def main() {
+    var x = 0
+    x = x + 1;
+}
+
+main();
