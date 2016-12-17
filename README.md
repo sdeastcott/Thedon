@@ -1,7 +1,5 @@
 #Thedon
 
-**Author: Steven Eastcott**
-
 This language doesn't have much use. It was primarily made as an exercise to help understand and appreciate the innerworkings of programming languages. Thedon is built on Java. The name originates from a man known as "The Don", who is, in short, an OG.
 
 ###Building Thedon
