@@ -4,13 +4,13 @@
 
 This language doesn't have much use. It was primarily made as an exercise to help understand and appreciate the innerworkings of programming languages. Thedon is built on Java. The name originates from a man known as "The Don", who is, in short, an OG.
 
-
 ###Building Thedon
-To build the interpreter, simply run 'make'. To run a .don file, use the command 'thedon filename.don'
+To build the interpreter, simply run 'make' from the root directory. To run a .don file, use the command 'thedon filename.don'
+
 
 ###Test Problem
 
-The source code for the RPN calculator is in 'problem.don'. To change the test input, change the expression on line 84 of that file. Run the test problem using the command 'make problem'. The evaluated result will be printed to the console.
+The source code for the RPN calculator is in 'problem.don'. To change the test input, change the expression on line 84 of that file. Run the test problem using the command 'make problem'. The evaluated result will be printed to the console. Other code samples can be found in the samples directory.
 
 
 ###Syntax
@@ -79,8 +79,7 @@ Thedon provides a basic set of operators:
 
 ####Precedence
 
-Thedon does not currently have built-in precedence. Therefore, it is recommended that you use parenthesized
-expressions if you wish to maintain precedence.
+Thedon doesn't currently support built-in precedence. Therefore, it is recommended that you use parenthesized expressions if you wish to maintain precedence.
 
 
 ###Object Orientation
