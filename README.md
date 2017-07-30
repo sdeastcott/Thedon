@@ -1,23 +1,23 @@
-#Thedon
+# Thedon
 
 This language doesn't have much use. It was primarily made as an exercise to help understand and appreciate the innerworkings of programming languages. Thedon is built on Java. The name originates from a man known as "The Don", who is, in short, an OG.
 
-###Building Thedon
+### Building Thedon
 To build the interpreter, simply run 'make' from the root directory. To run a .don file, use the command 'thedon filename.don'
 
 
-###Test Problem
+### Test Problem
 
 The source code for the RPN calculator is in 'problem.don'. To change the test input, change the expression on line 84 of that file. Run the test problem using the command 'make problem'. The evaluated result will be printed to the console. Other code samples can be found in the samples directory.
 
 
-###Syntax
+### Syntax
 - Curly braces '{ }' are required for all code blocks
 - All statements end in a semicolon ';'
 - Objects are created using the 'this' keyword.
 
 
-###Comments
+### Comments
 
 Thedon only provides single line commenting.
 $ This is a single line comment.
@@ -43,7 +43,7 @@ Existing variables can be redefined without using 'var'.
     functionName("one", "two");
 
 
-###Operators
+### Operators
 
 Thedon provides a basic set of operators:
 
@@ -75,12 +75,12 @@ Thedon provides a basic set of operators:
 - assign '='
 
 
-####Precedence
+#### Precedence
 
 Thedon doesn't currently support built-in precedence. Therefore, it is recommended that you use parenthesized expressions if you wish to maintain precedence.
 
 
-###Object Orientation
+### Object Orientation
 
 Objects are defined using the 'this' keyword. A defined constructor isn't required.
 
@@ -97,7 +97,7 @@ Objects are defined using the 'this' keyword. A defined constructor isn't requir
     me.fullName();
 
 
-###Built-in Functions
+### Built-in Functions
 
 Thedon provides several builtin functions: print, println, arr_append, arr_remove, arr_length, split, isInteger, stoi
 
@@ -118,14 +118,14 @@ Thedon provides several builtin functions: print, println, arr_append, arr_remov
   - prints out each arg separated by a space. println will end in a newline
 
 
-###Arrays
-####Defining Arrays
+### Arrays
+#### Defining Arrays
 
 Arrays are defined like all other variables.
 
     var arr = [1, "2", 3];
 
-####Accessing Arrays
+#### Accessing Arrays
 
 Arrays use zero-based indexing, and access to each element is done in constant time.
 
@@ -147,9 +147,9 @@ Thedon provides a while loop for iteration.
     }
 
 
-###Lambdas
+### Lambdas
 
-####Defining Lambdas
+#### Defining Lambdas
 
 Lambdas are defined using the 'lambda' keyword. All statements inside the lambda block must end in a semicolon.
 If a lambda is defined within a function, it must end in a semicolon.
@@ -162,7 +162,7 @@ If a lambda is defined within a function, it must end in a semicolon.
         };
     }
 
-####Calling Lambdas
+#### Calling Lambdas
 
 The ID of the variable holding the lambda must be wrapped in parentheses '()' in order to be called.
 The arguments must be wrapped in vertical bars '||'
